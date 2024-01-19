@@ -1,0 +1,20 @@
+SNP Line	prediction
+2	gain
+3	gain
+4	gain
+5	loss
+10	gain
+12	gain
+19	gain
+23	loss
+33	loss
+45	loss
+49	gain
+58	gain
+63	loss
+72	loss
+79	gain
+84	gain
+93	loss
+99	loss
+106	loss
