@@ -22,6 +22,11 @@ In the Standalone/Resources folder execute the following command:
 tar -xvzf pwms.tar.gz
 ```
 Finally the Escores.txt file must be downloaded from CISBP and placed in the Resources folder  
+To download the Escores file follow these steps (from the Resource folder):
+```console
+wget cisbp.ccbr.utoronto.ca/data/2.00/DataFiles/Bulk_downloads/EntireDataset/Escores.txt.zip
+unzip Escores.txt.zip  
+```
 
 
 ### Running 
