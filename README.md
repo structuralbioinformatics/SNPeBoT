@@ -27,7 +27,20 @@ To download the Escores file follow these steps (from the Resource folder):
 wget cisbp.ccbr.utoronto.ca/data/2.00/DataFiles/Bulk_downloads/EntireDataset/Escores.txt.zip
 unzip Escores.txt.zip  
 ```
+### Converting vcf or rsids
 
+We have included a python script to enble the running of mutations in the format of rsids or vcf.
+First all mutations must be stored in a file, then this file along with the relevant TF and an output file name should be passed to the command CreateInput.py like so:
+
+for rsids:
+```
+python CreateInput.py -r {path to input rsid file} -t {TF name} -o {output file}
+```
+
+for vcf:
+```
+python CreateInput.py -v {path to input rsid file} -t {TF name} -o {output file}
+```
 
 ### Running 
 
