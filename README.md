@@ -60,3 +60,8 @@ The TF input list is a txt file with one TF per row
 
 The output will be stored in the Results folder with the file name Output.txt prepended by the TF test  
 
+### Additional PBM Experiments
+
+It is possible to add PBM data not included in the CISBP Database. First the user would have to add E-score values to the Escores file downloaded in the set up step. To do this ensure that the tested DNA binding domain Ids are stored as column headers and that corresponding octamers align with the rownames as ordered in the Resources/8mer.txt file.
+Next the Ids that were added as column headers will have to be added to a stored Dictionary (motifs.pickle). This dictionary stores as keys various transcription factors, with their values being a list of Ids from the E-score table relevant to that TF. Add the IDs to the list stored under the target TF key and save the dictionary. If the target TF doesn't exist as a key, create a new key value pair. Finally, store the PWM of the DNA binding domain in the Resources/pwms folder. Ensure that the pwm file is named with the column header id and bears the suffix ".meme". 
+
