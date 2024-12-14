@@ -96,9 +96,12 @@ class Prediction:
 		self._inputSNPlocation = lineFile
 		self._sequences = self.set_sequences(self.get_InputLocation())
 		self._Reference_Motifs = []
+		self._WildValue = []
 		self._Alternate_Motifs = []
+		self._MutantValue = []
 		self._ConcordanceList = self.set_ConcordantData()
 		self._Predictions = [] 
+		self._inputlist = []
 	"""
 	GETTERS
 	"""	
@@ -143,6 +146,18 @@ class Prediction:
 		Get the list of best matching motifs for the alternate sequence
 		"""
 		return self._Alternate_Motifs
+	
+	def get_WildValue(self):
+		"""
+		Get the list of p_values associated with the best match in the Reference sequence
+		"""
+		return self._WildValue
+
+	def get_MutantValue(self):
+		"""
+		Get the list of p_values associated with the best match in the Alternate sequence
+		"""
+		return self._MutantValue
 
 	def get_PredictionList(self):
 		"""
@@ -218,7 +233,9 @@ class Prediction:
 
 			try:
 				self._Reference_Motifs.append(min(WildOptions, key=WildOptions.get))
+				self._WildValue.append(WildOptions[min(WildOptions, key=WildOptions.get)])
 				self._Alternate_Motifs.append(min(MutOptions, key=MutOptions.get))
+				self._MutantValue.append(MutOptions[min(MutOptions, key=MutOptions.get)])
 			except:
 				print("There are no motifs")
 				exit(0)
@@ -256,7 +273,9 @@ class Prediction:
 			scorelist = list()
 			altscorelist = list()
 			refmatch = list(filter(lambda x: self.get_ReferenceMotifs()[iteration] in x, Escores))
+			ref_p_val = self.get_WildValue()[iteration]
 			altmatch = list(filter(lambda x: self.get_AlternateMotifs()[iteration] in x, Escores))
+			alt_p_val = self.get_MutantValue()[iteration]
 			refindexlist = []
 			altindexlist = []
 			for i in range(0,8):
@@ -299,15 +318,17 @@ class Prediction:
 					refwindow.append(sum(scorelist[0:window])/len(scorelist[0:window]))
 			secondcombinedLists = refwindow
 			secondcombinedLists.extend(altwindow)
-			#print(refwindow, altwindow)
-			secondcombinedLists = np.reshape(np.array(secondcombinedLists), (6,-1) )
+			secondcombinedLists.append(ref_p_val)
+			secondcombinedLists.append(alt_p_val)
+			self._inputlist.append(secondcombinedLists) # print(refwindow, altwindow)
+			secondcombinedLists = np.reshape(np.array(secondcombinedLists), (8,-1) )
 			data = np.expand_dims(secondcombinedLists,axis=0)
-			print(data)
+			print(data, self.get_sequences()[iteration].get_refSite(), self.get_sequences()[iteration].get_altSite())
 			prediction = model.predict(data)
 			prediction = np.argmax(prediction,axis=-1)
 			prediction = np.where(prediction == 0, messages[0], np.where(prediction == 1, messages[1], messages[2]))
 			if concords[iteration] == 'noHIT':
-				pass
+				self._Predictions.append(("no change",iteration))#pass
 			#elif concords[iteration] == prediction[0]:
 			#	self._Predictions.append((prediction[0],iteration))
 			else:
