@@ -9,34 +9,10 @@ from sklearn import metrics
 ##############
 #FILES NEEDED#
 ##############
-# The row file for the Escore table ---> /home/pgohl/Work/pgohl/mutations/8mer.txt
-# The column file for the Escore table ---> /home/pgohl/Work/pgohl/mutations/EscoreHeader.txt
-# The Escore file ---> /sbi/users/interchange/boliva/ModCRE/pbm/CisBP_2019/Escores.txt
-# The Cisbp meme files ---> Resources/pwms/*.meme
-
-##############
-# all found in Resources folder. Size: 2.9G
-##############
-
-###
-### Bins for sequence similarities
-###
-
-# Dict_0-10.pickle
-# Dict_10-20.pickle
-# Dict_20-30.pickle
-# Dict_30-40.pickle
-# Dict_40-50.pickle
-# Dict_50-60.pickle
-# Dict_60-70.pickle 
-# Dict_70-80.pickle
-# Dict_80-90.pickle
-# Dict_90-100.pickle
-
-###
-###
-###
-
+# The row file for the Escore table 
+# The column file for the Escore table 
+# The Escore file 
+# The Cisbp meme files 
 
 
 ####
