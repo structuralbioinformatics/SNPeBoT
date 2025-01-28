@@ -39,7 +39,7 @@ python CreateInput.py -r {path to input rsid file} -t {TF name} -o {output file}
 
 for vcf:
 ```
-python CreateInput.py -v {path to input rsid file} -t {TF name} -o {output file}
+python CreateInput.py -v {path to input vcf file} -t {TF name} -o {output file}
 ```
 
 ### Running 
