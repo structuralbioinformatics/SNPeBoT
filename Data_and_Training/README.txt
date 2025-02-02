@@ -39,6 +39,13 @@ CNN_training_SNPeBoT.ipynb
 #########################
 The colab file contains instructions on running
 
-
+#########################
+#########################
+File containing the addresses for all of the motifs (in meme format) that were used in retrieving the E-scores for each Transcription Factor
+Motifs_Used_per_TF.tsv
+#########################
+#########################
+-Column 1 = Transcription Factor name
+-Column 2: = tab seperated list of the location of each meme file for this transcription factor
 
 
